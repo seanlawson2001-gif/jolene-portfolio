@@ -127,7 +127,7 @@ export default function Hero() {
               {/* Floating badge — bottom left */}
               <div className="absolute -bottom-4 -left-4 bg-charcoal dark:bg-[oklch(0.17_0.022_252)] text-cream px-4 py-3 rounded-lg shadow-lg">
                 <p className="font-display text-sm italic leading-tight">
-                  Digital Media Student
+                  Digital Media Production
                 </p>
                 <p className="text-xs opacity-60 mt-0.5">Malaysia</p>
               </div>

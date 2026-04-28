@@ -41,7 +41,7 @@ export default function Footer() {
             ))}
           </nav>
 
-          <p className="text-xs tracking-wide">© {currentYear} Jolene. All rights reserved.</p>
+          <p className="text-xs tracking-wide">© {currentYear} Tang Jolene. All rights reserved.</p>
         </div>
 
         <div className="border-t border-cream/10 mt-8 pt-6 text-center">

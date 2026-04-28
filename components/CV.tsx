@@ -54,13 +54,12 @@ const experience = [
 const softwareTools = [
   "Adobe Premiere Pro",
   "Adobe After Effects",
+  "Adobe Illustrator",
+  "Logic Pro",
+  "InShot",
   "Adobe Photoshop",
-  "Adobe Lightroom",
-  "CapCut",
-  "Canva Pro",
-  "Figma",
-  "Final Cut Pro",
   "Microsoft Office",
+  "Pro Tools",
 ];
 
 const mediaSkills = [
