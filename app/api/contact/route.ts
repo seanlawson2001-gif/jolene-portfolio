@@ -16,8 +16,8 @@ import { Resend } from "resend";
 
 export async function POST(request: NextRequest) {
   // Debug — logs show in Vercel → Logs tab. Remove once working.
-  console.log("[Contact API] KEY EXISTS:", !!process.env.RESEND_API_KEY);
-  console.log("[Contact API] KEY PREFIX:", process.env.RESEND_API_KEY?.slice(0, 6) ?? "undefined");
+  //console.log("[Contact API] KEY EXISTS:", !!process.env.RESEND_API_KEY);
+  //console.log("[Contact API] KEY PREFIX:", process.env.RESEND_API_KEY?.slice(0, 6) ?? "undefined");
 
   if (!process.env.RESEND_API_KEY) {
     return NextResponse.json(

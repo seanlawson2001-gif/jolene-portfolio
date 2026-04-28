@@ -29,13 +29,13 @@ const experience = [
   {
     role: "Content Creator",
     company: "TJ Zoomer (Independent)",
-    years: "2022 – Present",
+    years: "2024 – Present",
     details: "Creating original digital content across Instagram, TikTok, YouTube, and Twitch. Short films, advertisements, brand campaigns, and community-driven storytelling.",
   },
   {
     role: "Founder & Creative Director",
     company: "Thrifty Jaye",
-    years: "2022 – Present",
+    years: "2023 – Present",
     details: "Founded and operate a sustainable vintage thrift brand — sourcing, styling, photographing, and selling on Instagram and via Wix storefront.",
   },
 ];
