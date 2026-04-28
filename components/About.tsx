@@ -89,7 +89,7 @@ export default function About() {
             <div className="reveal reveal-delay-2 space-y-5">
               <p className="text-charcoal text-lg md:text-xl leading-relaxed font-light">
                 Hi, I&apos;m Tang Jolene — a Digital Media Production student at the University
-                of Wollongong Malaysia, filmmaker and content creator known as TJ Zoomer.
+                of Wollongong Malaysia, and a content creator known as TJ Zoomer.
               </p>
               <p className="text-warm-gray text-base leading-relaxed">
                 I have hands-on experience in video production, scriptwriting, directing,
@@ -99,7 +99,7 @@ export default function About() {
                 motion graphics, and creating engaging content for digital platforms.
               </p>
               <p className="text-warm-gray text-base leading-relaxed">
-                I create because I&apos;m inspired by my Creator, my curiosity and tenacity
+                I create because I&apos;m inspired by my Creator — my curiosity and tenacity
                 for the Truth shine through everything I make. Alongside my content work,
                 I run{" "}
                 <a
@@ -136,16 +136,18 @@ export default function About() {
                 Skills &amp; Tools
               </p>
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill, i) => (
-                  <span key={skill} className="skill-tag text-xs font-medium"
-                    style={{
-                      background: i % 3 === 0 ? "#F3EFE8" : i % 3 === 1 ? "#EAF0EA" : "#F0ECE8",
-                      color:      i % 3 === 0 ? "#6B5E58" : i % 3 === 1 ? "#5A7A62" : "#7A6050",
-                      border:     `1px solid ${i % 3 === 0 ? "#E5DED5" : i % 3 === 1 ? "#C0D4C0" : "#DDCFC0"}`,
-                    }}>
-                    {skill}
-                  </span>
-                ))}
+                {skills.map((skill, i) => {
+                  const variants = [
+                    "bg-[#F3EFE8] text-[#6B5E58] border-[#E5DED5] dark:bg-[#1E1F2A] dark:text-[#9A8F8A] dark:border-[#2A2D3A]",
+                    "bg-[#EAF0EA] text-[#5A7A62] border-[#C0D4C0] dark:bg-[#1A2020] dark:text-[#6B9A72] dark:border-[#253025]",
+                    "bg-[#F0ECE8] text-[#7A6050] border-[#DDCFC0] dark:bg-[#201C1A] dark:text-[#9A7A6A] dark:border-[#302820]",
+                  ];
+                  return (
+                    <span key={skill} className={`skill-tag text-xs font-medium border ${variants[i % 3]}`}>
+                      {skill}
+                    </span>
+                  );
+                })}
               </div>
             </div>
 

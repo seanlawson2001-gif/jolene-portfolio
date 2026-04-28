@@ -220,7 +220,7 @@ export default function CV() {
               </div>
             </div>
 
-            <div className="reveal reveal-delay-4 bg-cream rounded-2xl border border-border p-6">
+            <div className="reveal reveal-delay-4 bg-cream dark:bg-[oklch(0.17_0.022_252)] rounded-2xl border border-border p-6">
               <h3 className="text-xs font-semibold tracking-widest uppercase text-charcoal mb-4">Languages</h3>
               <div className="space-y-3">
                 {[

@@ -56,7 +56,7 @@ function IconLinkedin({ size = 16 }: { size?: number }) {
     </svg>
   );
 }
- 
+
 function IconThreads({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 192 192" fill="currentColor"
@@ -65,7 +65,6 @@ function IconThreads({ size = 16 }: { size?: number }) {
     </svg>
   );
 }
-
 
 // ─── TYPES ────────────────────────────────────────────────────────────────
 
@@ -192,11 +191,11 @@ export default function Contact() {
             {/* Email */}
             <div className="reveal reveal-delay-2">
               <p className="form-label">Email</p>
-              <a href="mailto:tjzoomer1@email.com"
+              <a href="mailto:tjzoomer1@gmail.com"
                 className="flex items-center gap-2.5 text-charcoal hover:text-terracotta transition-colors group">
                 <Mail size={16} className="text-terracotta" />
                 <span className="text-sm font-medium group-hover:underline">
-                  tjzoomer1@email.com
+                  tjzoomer1@gmail.com
                 </span>
               </a>
             </div>
@@ -235,7 +234,6 @@ export default function Contact() {
                   <IconThreads size={16} />
                   <span className="text-sm">Threads</span>
                 </a>
-
               </div>
             </div>
 
@@ -246,7 +244,7 @@ export default function Contact() {
                 href="https://linktr.ee/tjzoomer"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-warm-white border border-border hover:border-terracotta rounded-xl px-4 py-3.5 transition-colors duration-200 group"
+                className="flex items-center gap-3 bg-warm-white dark:bg-[oklch(0.17_0.022_252)] border border-border hover:border-terracotta rounded-xl px-4 py-3.5 transition-colors duration-200 group"
               >
                 {/* Linktree logomark */}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-terracotta shrink-0" xmlns="http://www.w3.org/2000/svg">
@@ -265,9 +263,8 @@ export default function Contact() {
               </a>
             </div>
 
-
             {/* Availability */}
-            <div className="reveal reveal-delay-4">
+            <div className="reveal reveal-delay-5">
               <div className="inline-flex items-center gap-2 bg-warm-white border border-border rounded-full px-4 py-2">
                 <span className="w-2 h-2 rounded-full bg-sage animate-pulse" />
                 <span className="text-xs text-warm-gray font-medium">

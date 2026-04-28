@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-cream"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-cream dark:bg-[oklch(0.12_0.018_252)]"
     >
       <div className="grain-overlay" aria-hidden="true" />
 
@@ -67,8 +67,8 @@ export default function Hero() {
                   { label: "YouTube",   href: "https://youtube.com/@tjzoomer"  },
                   { label: "TikTok",    href: "https://tiktok.com/@tjzoomer"   },
                   { label: "Twitch",    href: "https://twitch.tv/tjzoomer"     },
-                  { label: "LinkedIn",  href: "https://www.linkedin.com/in/tangjolene"     },
-                  { label: "Threads",   href: "https://www.threads.com/@tjzoomer"}
+                  { label: "LinkedIn",    href: "https://www.linkedin.com/in/tangjolene/"     },
+                  { label: "Threads",    href: "https://www.threads.com/@tjzoomer"     },
                 ].map(({ label, href }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                     className="text-warm-gray hover:text-terracotta transition-colors text-sm font-medium tracking-wider">
@@ -96,7 +96,7 @@ export default function Hero() {
               </div>
 
               {/* Floating badge — bottom left */}
-              <div className="absolute -bottom-4 -left-4 bg-charcoal text-cream px-4 py-3 rounded-lg shadow-lg">
+              <div className="absolute -bottom-4 -left-4 bg-charcoal dark:bg-[oklch(0.17_0.022_252)] text-cream px-4 py-3 rounded-lg shadow-lg">
                 <p className="font-display text-sm italic leading-tight">Digital Media Student</p>
                 <p className="text-xs opacity-60 mt-0.5">Malaysia</p>
               </div>

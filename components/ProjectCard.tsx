@@ -121,12 +121,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       {/* ── Video Modal — animated open/close ─────────────────────────── */}
       {videoOpen && project.videoUrl && (
         <div
-          className="modal-backdrop fixed inset-0 z-50 bg-charcoal/85 flex items-center justify-center p-4 md:p-8"
+          className="modal-backdrop fixed inset-0 z-50 bg-charcoal/85 dark:bg-black/90 flex items-center justify-center p-4 md:p-8"
           onClick={() => setVideoOpen(false)}
         >
           {/* modal-content class triggers modalIn animation from globals.css */}
           <div
-            className="modal-content relative w-full max-w-4xl bg-charcoal rounded-2xl overflow-hidden"
+            className="modal-content relative w-full max-w-4xl bg-charcoal dark:bg-[#0E1017] rounded-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -141,7 +141,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               <p className="text-cream text-sm font-medium">{project.title}</p>
               {isDrive && (
                 <p className="text-cream/40 text-xs mt-0.5">
-                  Hosted on Google Drive — ensure the file is shared publicly.
+                  Hosted on Google Drive
                 </p>
               )}
             </div>

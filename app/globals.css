@@ -220,3 +220,145 @@ section[id] { scroll-margin-top: 80px; }
   }
   .scroll-bounce { animation: none !important; }
 }
+
+/* ─── DARK MODE ──────────────────────────────────────────────────────────────
+ * Applied when <html class="dark"> — set by next-themes based on system
+ * preference or manual toggle.
+ *
+ * Palette: deep navy/slate with warm terracotta + sage accents.
+ * Colors use OKLCH for perceptual uniformity — light/dark versions remain
+ * visually balanced in saturation and contrast.
+ *
+ * Three surface levels create depth without harsh contrast:
+ *   cream (page bg) → warm-white (section bg) → explicit card elevations
+ */
+
+.dark {
+  /* ── Backgrounds ── */
+  --color-cream:        oklch(0.12 0.018 252);   /* deep navy page bg     */
+  --color-warm-white:   oklch(0.17 0.022 252);   /* section alt bg        */
+
+  /* ── Text ── */
+  --color-charcoal:     oklch(0.93 0.008 65);    /* warm off-white text   */
+  --color-warm-gray:    oklch(0.56 0.012 65);    /* muted secondary text  */
+
+  /* ── Structure ── */
+  --color-border:       oklch(0.24 0.020 252);   /* subtle border         */
+
+  /* ── Accents stay the same — terracotta + sage pop on dark ── */
+}
+
+/* ── Navbar glass in dark ───────────────────────────────────────────────── */
+.dark .navbar-scrolled {
+  background: oklch(0.12 0.018 252 / 0.92);
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 1px 24px oklch(0 0 0 / 0.4);
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+/* btn-primary: charcoal is now off-white — swap to terracotta in dark mode */
+.dark .btn-primary {
+  background: var(--color-terracotta);
+  color: oklch(0.12 0.018 252);    /* dark bg colour as text */
+  box-shadow: 0 0 0 0 transparent;
+}
+.dark .btn-primary:hover {
+  background: var(--color-terracotta-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px oklch(0.64 0.12 40 / 0.35);
+}
+.dark .btn-secondary {
+  border-color: var(--color-border);
+  color: var(--color-charcoal);
+  background: transparent;
+}
+.dark .btn-secondary:hover {
+  background: var(--color-warm-white);
+  border-color: var(--color-terracotta);
+  color: var(--color-charcoal);
+}
+
+/* ── Filter buttons ─────────────────────────────────────────────────────── */
+.dark .filter-btn {
+  border-color: var(--color-border);
+  color: var(--color-warm-gray);
+}
+.dark .filter-btn:hover {
+  border-color: var(--color-terracotta);
+  color: var(--color-terracotta);
+}
+.dark .filter-btn.active {
+  background: var(--color-terracotta);
+  border-color: var(--color-terracotta);
+  color: oklch(0.12 0.018 252);
+}
+
+/* ── Portfolio cards ─────────────────────────────────────────────────────── */
+.dark .portfolio-card {
+  background: var(--color-warm-white);
+  border-color: var(--color-border);
+}
+.dark .portfolio-card:hover {
+  box-shadow: 0 20px 60px oklch(0 0 0 / 0.5);
+}
+
+/* ── Form ───────────────────────────────────────────────────────────────── */
+.dark .form-input {
+  border-bottom-color: var(--color-border);
+  color: var(--color-charcoal);
+}
+.dark .form-input:focus {
+  border-bottom-color: var(--color-terracotta);
+}
+.dark .form-input::placeholder {
+  color: var(--color-warm-gray);
+  opacity: 0.5;
+}
+
+/* ── Section label ───────────────────────────────────────────────────────── */
+.dark .section-label {
+  color: var(--color-terracotta-light);   /* slightly lighter in dark */
+}
+
+/* ── CV timeline dots ────────────────────────────────────────────────────── */
+/* Dots already use terracotta/sage which look great — no change needed */
+
+/* ── Modal — always dark regardless of mode ──────────────────────────────── */
+.dark .modal-backdrop {
+  background: oklch(0 0 0 / 0.88);
+}
+.dark .modal-content {
+  background: oklch(0.14 0.018 252);
+}
+
+/* ── Selection highlight ─────────────────────────────────────────────────── */
+.dark ::selection {
+  background: oklch(0.64 0.12 40 / 0.35);
+  color: var(--color-charcoal);
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+.dark ::-webkit-scrollbar-track { background: var(--color-cream); }
+.dark ::-webkit-scrollbar-thumb { background: var(--color-border); }
+.dark ::-webkit-scrollbar-thumb:hover { background: var(--color-warm-gray); }
+
+/* ── Hero decorative gradient circles — softer in dark mode ─────────────── */
+/* Handled via inline style overrides in Hero.tsx */
+
+/* ── Grain overlay — reduce opacity in dark (less noise needed) ──────────── */
+.dark .grain-overlay { opacity: 0.2; }
+
+/* ── Availability badge pulse ────────────────────────────────────────────── */
+.dark .bg-sage { background: var(--color-sage); }
+
+/* ── Reduced motion — respect in both modes ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .scroll-bounce { animation: none !important; }
+}
