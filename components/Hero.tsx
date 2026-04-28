@@ -34,10 +34,10 @@ export default function Hero() {
 
             <h1 className="hero-title font-display leading-[0.88] tracking-tight text-charcoal mb-6">
               <span className="block text-[clamp(4rem,12vw,9rem)] font-light italic">
-                Jolene
+                TJ Zoomer
               </span>
               <span className="block text-[clamp(1.1rem,3vw,2rem)] font-light tracking-normal mt-3 text-warm-gray not-italic">
-                TJ Zoomer — Content Creator & Filmmaker
+                Content Creator & Filmmaker
               </span>
             </h1>
 
