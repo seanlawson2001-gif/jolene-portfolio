@@ -88,7 +88,7 @@ export default function About() {
 
             <div className="reveal reveal-delay-2 space-y-5">
               <p className="text-charcoal text-lg md:text-xl leading-relaxed font-light">
-                Hi, I&apos;m Jolene — a Digital Media Production student at the University
+                Hi, I&apos;m Tang Jolene — a Digital Media Production student at the University
                 of Wollongong Malaysia, and a content creator known as TJ Zoomer.
               </p>
               <p className="text-warm-gray text-base leading-relaxed">

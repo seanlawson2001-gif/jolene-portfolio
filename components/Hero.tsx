@@ -101,7 +101,7 @@ export default function Hero() {
 
               {/* Year badge — top right */}
               <div className="absolute -top-3 -right-3 w-16 h-16 bg-terracotta rounded-full flex items-center justify-center shadow-md">
-                <span className="font-display text-cream text-xl font-light">2025</span>
+                <span className="font-display text-cream text-xl font-light">2026</span>
               </div>
             </div>
           </div>
