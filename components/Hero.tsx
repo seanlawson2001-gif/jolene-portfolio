@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-cream dark:bg-[oklch(0.12_0.018_252)]"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-cream"
     >
       <div className="grain-overlay" aria-hidden="true" />
 
