@@ -38,6 +38,22 @@ export type Project = {
 
 export const projects: Project[] = [
 
+    // ─── DEMO REEL ────────────────────────────────────────────────────────────
+  {
+    id: "demo-reel",
+    title: "Demo Reel",
+    category: "University Work",
+    description:
+      "A curated showreel of selected film and media work — showcasing directing, cinematography, editing, and visual storytelling across short films and brand productions.",
+    thumbnailUrl: "https://images.unsplash.com/photo-1536240478700-b869ad10e2c7?w=800&q=80",
+    videoUrl: "https://drive.google.com/file/d/1JzLGR8kqJOMSjPWwO3tT-nregTUmRbuC/view?usp=drive_link",
+    tools: ["Premiere Pro", "After Effects"],
+    year: "2025",
+    role: "Director, Editor",
+    featured: true,
+  },
+
+
   // ─── "Don't Blink" ────────────────────────────────────────────────────
   {
     id: "dont-blink",
@@ -47,7 +63,7 @@ export const projects: Project[] = [
       "A short film exploring tension, perception, and the unseen. Ambitious in scope — from concept and script through to final cut.",
     thumbnailUrl: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80",
     videoUrl: "https://drive.google.com/file/d/1gMzguTYXMQV1ojwCdf40PTBGVPLtA4XV/view?usp=drive_link",
-    tools: ["Premiere Pro", "DaVinci Resolve", "After Effects"],
+    tools: ["Premiere Pro", "After Effects"],
     year: "2025",
     role: "Director, Writer",
     featured: true,
@@ -62,7 +78,7 @@ export const projects: Project[] = [
       "Most recent short film — a character study on authenticity and what it means to be real in a world of curated identities.",
     thumbnailUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80",
     videoUrl: "https://drive.google.com/file/d/1vIFBE8s1_wY-_P8RDMQxKm8KKOfYxSkE/view?usp=drive_link",
-    tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"],
+    tools: ["Premiere Pro", "After Effects"],
     year: "2026",
     role: "Director, Writer, Editor",
     featured: true,
@@ -92,7 +108,7 @@ export const projects: Project[] = [
       "A short film grounded in emotional truth — exploring memory, presence, and the people who stay with us long after they're gone.",
     thumbnailUrl: "https://images.unsplash.com/photo-1500051638674-ff996a0ec29e?w=800&q=80",
     videoUrl: "https://drive.google.com/file/d/1rElCjUjFf5Sfof950q_0RRkaY52ch00S/view?usp=drive_link",
-    tools: ["Premiere Pro", "DaVinci Resolve"],
+    tools: ["Premiere Pro"],
     year: "2025",
     role: "Director, Editor",
   },
@@ -106,7 +122,7 @@ export const projects: Project[] = [
       "A short film with rich visual storytelling — playing with texture, light, and indulgence as metaphor.",
     thumbnailUrl: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80",
     videoUrl: "https://drive.google.com/file/d/17maYtQGZwE1AhcSBCk62ZD-KtQMfpwzk/view?usp=drive_link",
-    tools: ["Premiere Pro", "After Effects", "Lightroom"],
+    tools: ["Premiere Pro", "After Effects"],
     year: "2024",
     role: "Director, Editor",
   },
@@ -120,7 +136,7 @@ export const projects: Project[] = [
       "A quiet, introspective short film about solitude — told through composition, silence, and the spaces between moments.",
     thumbnailUrl: "https://images.unsplash.com/photo-1531804055935-76f44d7cabc6?w=800&q=80",
     videoUrl: "https://drive.google.com/file/d/1baaOwvJCwpGWbrjzM1kB-B41KDK7JhX6/view?usp=drive_link",
-    tools: ["Premiere Pro", "DaVinci Resolve"],
+    tools: ["Premiere Pro"],
     year: "2024",
     role: "Director, Editor",
   },
@@ -148,7 +164,7 @@ export const projects: Project[] = [
       "A kinetic action sequence demonstrating camera work, choreography, editing rhythm, and post-production craft.",
     thumbnailUrl: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80",
     videoUrl: "https://drive.google.com/file/d/1vSUt9uxnNzsNn4CkKNh5xgrBUkQhH8xP/view?usp=drive_link",
-    tools: ["Premiere Pro", "After Effects", "DaVinci Resolve"],
+    tools: ["Premiere Pro", "After Effects"],
     year: "2024",
     role: "Director, Editor",
   },

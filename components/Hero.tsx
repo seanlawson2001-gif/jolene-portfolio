@@ -67,6 +67,8 @@ export default function Hero() {
                   { label: "YouTube",   href: "https://youtube.com/@tjzoomer"  },
                   { label: "TikTok",    href: "https://tiktok.com/@tjzoomer"   },
                   { label: "Twitch",    href: "https://twitch.tv/tjzoomer"     },
+                  { label: "LinkedIn",  href: "https://www.linkedin.com/in/tangjolene"     },
+                  { label: "Threads",   href: "https://www.threads.com/@tjzoomer"}
                 ].map(({ label, href }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer"
                     className="text-warm-gray hover:text-terracotta transition-colors text-sm font-medium tracking-wider">

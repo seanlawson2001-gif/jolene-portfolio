@@ -239,6 +239,33 @@ export default function Contact() {
               </div>
             </div>
 
+            {/* Linktree — digital business card */}
+            <div className="reveal reveal-delay-4">
+              <p className="form-label mb-3">Digital Business Card</p>
+              <a
+                href="https://linktr.ee/tjzoomer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-warm-white border border-border hover:border-terracotta rounded-xl px-4 py-3.5 transition-colors duration-200 group"
+              >
+                {/* Linktree logomark */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-terracotta shrink-0" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.953 15.066c-.08.163-.08.324-.08.486.08.567.567.973 1.134.973h1.94v4.137c0 .649.485 1.215 1.134 1.215.648 0 1.134-.566 1.134-1.215v-4.137h1.94c.567 0 1.054-.406 1.135-.973 0-.162 0-.323-.081-.486l-3.073-5.676-.08-.081c-.162-.162-.405-.243-.649-.243-.242 0-.485.08-.648.243l-.08.081-3.73 5.676z" fill="currentColor"/>
+                  <path d="M7.872 9.39c-.162.162-.243.405-.243.648 0 .243.08.486.243.649.162.162.405.243.648.243h7.46c.243 0 .486-.08.649-.243.162-.163.243-.406.243-.649 0-.243-.08-.486-.243-.648L13.1 4.282l-.081-.081c-.162-.162-.405-.243-.648-.243-.243 0-.487.08-.65.243l-.08.081L7.872 9.39z" fill="currentColor"/>
+                </svg>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-charcoal group-hover:text-terracotta transition-colors duration-200 leading-tight">
+                    linktr.ee/tjzoomer
+                  </p>
+                  <p className="text-xs text-warm-gray mt-0.5">All links in one place</p>
+                </div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-warm-gray group-hover:text-terracotta ml-auto shrink-0 transition-colors duration-200">
+                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+              </a>
+            </div>
+
+
             {/* Availability */}
             <div className="reveal reveal-delay-4">
               <div className="inline-flex items-center gap-2 bg-warm-white border border-border rounded-full px-4 py-2">

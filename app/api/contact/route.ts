@@ -1,87 +1,102 @@
 // app/api/contact/route.ts
-// This is the backend API endpoint that handles contact form submissions.
+// Handles contact form submissions — sends an email to Jolene via Resend.
 //
-// HOW IT WORKS:
-// 1. The contact form on the site sends a POST request to /api/contact
-// 2. This code validates the submitted data
-// 3. If valid, it writes a new row to Google Sheets via lib/googleSheets.ts
-// 4. It returns a JSON response (success or error)
+// SETUP:
+// 1. Sign up at https://resend.com (free — 3,000 emails/month)
+// 2. Go to API Keys → Create API Key → copy it
+// 3. Add to .env.local:  RESEND_API_KEY=re_xxxxxxxxxxxx
+// 4. Add to Vercel dashboard → Settings → Environment Variables (same key)
 //
-// IMPORTANT: This code only runs on the server (Vercel), never in the browser.
-// That's why it's safe to use Google API credentials here.
+// IMPORTANT: On Resend's free plan you can only send FROM onboarding@resend.dev
+// unless you verify a custom domain. The email will arrive FROM that address
+// but will say "Reply-To: visitor's email" so Jolene can reply directly.
 
 import { NextRequest, NextResponse } from "next/server";
-import { appendToSheet, ContactFormData } from "@/lib/googleSheets";
+import { Resend } from "resend";
 
-// ─── POST Handler ────────────────────────────────────────────────────────────
 export async function POST(request: NextRequest) {
   try {
-    // Parse the JSON body sent by the contact form
     const body = await request.json();
-
     const { name, email, subject, inquiryType, message } = body;
 
-    // ── Server-side validation ────────────────────────────────────────────
-    // Always validate on the server even if the frontend also validates.
+    // ── Validate ──────────────────────────────────────────────────────────
     const errors: string[] = [];
+    if (!name?.trim() || name.trim().length < 2)
+      errors.push("Name is required.");
+    if (!email?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      errors.push("A valid email is required.");
+    if (!message?.trim() || message.trim().length < 10)
+      errors.push("Message must be at least 10 characters.");
 
-    if (!name || typeof name !== "string" || name.trim().length < 2) {
-      errors.push("Name is required and must be at least 2 characters.");
-    }
+    if (errors.length > 0)
+      return NextResponse.json({ success: false, message: errors.join(" ") }, { status: 400 });
 
-    if (!email || typeof email !== "string") {
-      errors.push("Email is required.");
-    } else {
-      // Simple regex to check email format
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email.trim())) {
-        errors.push("Please provide a valid email address.");
-      }
-    }
+    // ── Send email via Resend ─────────────────────────────────────────────
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    if (!message || typeof message !== "string" || message.trim().length < 10) {
-      errors.push("Message is required and must be at least 10 characters.");
-    }
+    await resend.emails.send({
+      // UPDATE: Once you verify a domain on Resend, change this to your own email
+      // e.g. "Jolene Portfolio <noreply@tjzoomer.com>"
+      // Until then, use the free Resend address:
+      from: "Jolene Portfolio <onboarding@resend.dev>",
 
-    // If there are validation errors, return them
-    if (errors.length > 0) {
-      return NextResponse.json(
-        { success: false, message: errors.join(" ") },
-        { status: 400 }
-      );
-    }
+      // UPDATE: Change this to Jolene's actual email address
+      to: ["tjzoomer1@gmail.com"],
 
-    // ── Sanitise inputs ───────────────────────────────────────────────────
-    const formData: ContactFormData = {
-      name: name.trim().slice(0, 200),
-      email: email.trim().toLowerCase().slice(0, 200),
-      subject: (subject || "").trim().slice(0, 300),
-      inquiryType: (inquiryType || "General Inquiry").trim().slice(0, 100),
-      message: message.trim().slice(0, 5000),
-    };
+      replyTo: email.trim(),
 
-    // ── Write to Google Sheets ────────────────────────────────────────────
-    await appendToSheet(formData);
+      subject: `New message from ${name.trim()}${subject ? ` — ${subject}` : ""}`,
 
-    // ── Return success ────────────────────────────────────────────────────
+      html: `
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
+          <h2 style="color: #1C1917; margin-bottom: 4px;">New Portfolio Enquiry</h2>
+          <p style="color: #6B5E58; margin-top: 0; margin-bottom: 24px; font-size: 14px;">
+            Submitted via tjzoomer.com
+          </p>
+
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E5DED5; color: #6B5E58; font-size: 13px; width: 120px;">Name</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E5DED5; color: #1C1917; font-size: 14px;">${name.trim()}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E5DED5; color: #6B5E58; font-size: 13px;">Email</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E5DED5; color: #1C1917; font-size: 14px;">
+                <a href="mailto:${email.trim()}" style="color: #C4856A;">${email.trim()}</a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E5DED5; color: #6B5E58; font-size: 13px;">Type</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E5DED5; color: #1C1917; font-size: 14px;">${inquiryType || "General Inquiry"}</td>
+            </tr>
+            ${subject ? `
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E5DED5; color: #6B5E58; font-size: 13px;">Subject</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #E5DED5; color: #1C1917; font-size: 14px;">${subject.trim()}</td>
+            </tr>` : ""}
+          </table>
+
+          <div style="background: #F3EFE8; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px;">
+            <p style="color: #6B5E58; font-size: 13px; margin: 0 0 8px 0;">Message</p>
+            <p style="color: #1C1917; font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${message.trim()}</p>
+          </div>
+
+          <p style="color: #6B5E58; font-size: 12px; margin: 0;">
+            Hit Reply to respond directly to ${name.trim()} at ${email.trim()}
+          </p>
+        </div>
+      `,
+    });
+
     return NextResponse.json(
-      {
-        success: true,
-        message: "Thank you! Your message has been received. I'll be in touch soon.",
-      },
+      { success: true, message: "Thanks! Your message has been sent. Jolene will be in touch soon." },
       { status: 200 }
     );
-  } catch (error) {
-    // Log the error server-side (visible in Vercel logs)
-    console.error("[Contact API] Error:", error);
 
-    // Return a safe error message to the client
+  } catch (error) {
+    console.error("[Contact API] Error:", error);
     return NextResponse.json(
-      {
-        success: false,
-        message:
-          "Something went wrong while sending your message. Please try again or email me directly.",
-      },
+      { success: false, message: "Something went wrong. Please try again or email directly." },
       { status: 500 }
     );
   }
