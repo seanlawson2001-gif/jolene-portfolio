@@ -99,7 +99,7 @@ export default function About() {
                 motion graphics, and creating engaging content for digital platforms.
               </p>
               <p className="text-warm-gray text-base leading-relaxed">
-                I create because I&apos;m inspired by my Creator — my curiosity and tenacity
+                I create because I&apos;m inspired by my Creator, my curiosity and tenacity
                 for the Truth shine through everything I make. Alongside my content work,
                 I run{" "}
                 <a
