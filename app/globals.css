@@ -1,0 +1,222 @@
+/* app/globals.css — Tailwind v4 */
+
+@import "tailwindcss";
+
+/* ─── DESIGN TOKENS ────────────────────────────────────────────────────────*/
+@theme {
+  --color-cream:            #FAFAF7;
+  --color-warm-white:       #F3EFE8;
+  --color-charcoal:         #1C1917;
+  --color-warm-gray:        #6B5E58;
+  --color-terracotta:       #C4856A;
+  --color-terracotta-light: #DFB09C;
+  --color-terracotta-dark:  #A06048;
+  --color-sage:             #7A9A82;
+  --color-sage-light:       #A8C4AE;
+  --color-sage-dark:        #5A7A62;
+  --color-border:           #E5DED5;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body:    "DM Sans", system-ui, sans-serif;
+  --animate-fade-up:  fadeUp  0.8s ease forwards;
+  --animate-fade-in:  fadeIn  0.6s ease forwards;
+  --animate-slide-in: slideIn 0.7s ease forwards;
+}
+
+/* ─── KEYFRAMES ─────────────────────────────────────────────────────────── */
+@keyframes fadeUp       { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn       { from { opacity:0; }                             to { opacity:1; }                          }
+@keyframes slideIn      { from { opacity:0; transform:translateX(-20px); } to { opacity:1; transform:translateX(0); } }
+@keyframes heroFadeUp   { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@keyframes scaleIn      { from { opacity:0; transform:scale(0.95); }      to { opacity:1; transform:scale(1); }     }
+@keyframes scrollBounce { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(8px); } }
+@keyframes slideDown    { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+@keyframes modalIn      { from { opacity:0; transform:scale(0.96) translateY(12px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes successIn    { from { opacity:0; transform:translateY(16px) scale(0.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+
+/* ─── BASE ──────────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; background-color: var(--color-cream); }
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+section[id] { scroll-margin-top: 80px; }
+
+/* ─── SCROLL REVEAL ─────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+.reveal-delay-5 { transition-delay: 0.40s; }
+
+/* ─── HERO ──────────────────────────────────────────────────────────────── */
+.hero-title    { animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.2s both; }
+.hero-subtitle { animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.4s both; }
+.hero-cta      { animation: heroFadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.6s both; }
+.hero-scroll   { animation: fadeIn 1s ease 1.2s both; }
+.hero-deco     { animation: scaleIn 1.2s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+.scroll-bounce { animation: scrollBounce 2s ease-in-out infinite; }
+
+/* ─── MOBILE NAV DRAWER ─────────────────────────────────────────────────── */
+.nav-drawer { animation: slideDown 0.25s cubic-bezier(0.16,1,0.3,1); }
+
+/* ─── PORTFOLIO CARD ────────────────────────────────────────────────────── */
+.portfolio-card {
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease;
+}
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(28,25,23,0.10);
+}
+.portfolio-card .card-image { overflow: hidden; }
+.portfolio-card:hover .card-image img { transform: scale(1.05); }
+.portfolio-card .card-image img { transition: transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+.portfolio-card .card-overlay { transition: opacity 0.3s ease; opacity: 0; }
+.portfolio-card:hover .card-overlay { opacity: 1; }
+
+/* ─── VIDEO MODAL ───────────────────────────────────────────────────────── */
+.modal-backdrop { animation: fadeIn 0.25s ease; }
+.modal-content  { animation: modalIn 0.35s cubic-bezier(0.16,1,0.3,1); }
+
+/* ─── CONTACT SUCCESS STATE ─────────────────────────────────────────────── */
+.success-panel { animation: successIn 0.45s cubic-bezier(0.16,1,0.3,1); }
+
+/* ─── FORM ──────────────────────────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--color-border);
+  padding: 10px 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  outline: none;
+  transition: border-color 0.2s ease;
+  resize: none;
+}
+.form-input::placeholder { color: var(--color-warm-gray); opacity: 0.55; }
+.form-input:focus { border-bottom-color: var(--color-terracotta); }
+.form-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-warm-gray);
+  margin-bottom: 4px;
+}
+
+/* ─── SKILL TAGS ────────────────────────────────────────────────────────── */
+.skill-tag {
+  display: inline-block;
+  padding: 5px 13px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.skill-tag:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(28,25,23,0.08); }
+
+/* ─── FILTER BUTTONS ────────────────────────────────────────────────────── */
+.filter-btn {
+  padding: 7px 18px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1.5px solid var(--color-border);
+  background: transparent;
+  color: var(--color-warm-gray);
+}
+.filter-btn:hover  { border-color: var(--color-terracotta); color: var(--color-terracotta); }
+.filter-btn.active { background: var(--color-terracotta); border-color: var(--color-terracotta); color: white; }
+
+/* ─── BUTTONS ───────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--color-charcoal); color: var(--color-cream);
+  padding: 13px 26px; border-radius: 4px;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer; border: none; text-decoration: none;
+}
+.btn-primary:hover {
+  background: var(--color-terracotta);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196,133,106,0.35);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--color-charcoal);
+  padding: 12px 26px; border-radius: 4px;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+  cursor: pointer; border: 1.5px solid var(--color-charcoal); text-decoration: none;
+}
+.btn-secondary:hover { background: var(--color-charcoal); color: var(--color-cream); }
+
+/* ─── SECTION LABEL ─────────────────────────────────────────────────────── */
+.section-label {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.20em; text-transform: uppercase;
+  color: var(--color-terracotta); margin-bottom: 10px;
+}
+
+/* ─── NAVBAR ────────────────────────────────────────────────────────────── */
+.navbar-scrolled {
+  background: rgba(250,250,247,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 1px 16px rgba(28,25,23,0.04);
+}
+
+/* ─── GRAIN OVERLAY ─────────────────────────────────────────────────────── */
+.grain-overlay {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-warm-gray); }
+
+/* ─── SELECTION ─────────────────────────────────────────────────────────── */
+::selection { background: var(--color-terracotta-light); color: var(--color-charcoal); }
+
+/* ─── ACCESSIBILITY: PREFERS-REDUCED-MOTION ─────────────────────────────── */
+/* Mandatory — users who request no motion get none. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Reveal elements should be visible immediately with no transforms */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .scroll-bounce { animation: none !important; }
+}
