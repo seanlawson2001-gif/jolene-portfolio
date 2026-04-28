@@ -15,6 +15,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 export async function POST(request: NextRequest) {
+  // Debug — logs show in Vercel → Logs tab. Remove once working.
+  console.log("[Contact API] KEY EXISTS:", !!process.env.RESEND_API_KEY);
+  console.log("[Contact API] KEY PREFIX:", process.env.RESEND_API_KEY?.slice(0, 6) ?? "undefined");
+
+  if (!process.env.RESEND_API_KEY) {
+    return NextResponse.json(
+      { success: false, message: "Server config error: API key missing." },
+      { status: 500 }
+    );
+  }
+
   try {
     const body = await request.json();
     const { name, email, subject, inquiryType, message } = body;
