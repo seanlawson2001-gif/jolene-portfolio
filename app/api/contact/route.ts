@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">
           <h2 style="color: #1C1917; margin-bottom: 4px;">New Portfolio Enquiry</h2>
           <p style="color: #6B5E58; margin-top: 0; margin-bottom: 24px; font-size: 14px;">
-            Submitted via tjzoomer.com
+            Submitted via jolene-portfolio-coral.vercel.app
           </p>
 
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
